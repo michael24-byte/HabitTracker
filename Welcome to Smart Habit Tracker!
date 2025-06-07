@@ -1,0 +1,14 @@
+Welcome to Smart Habit Tracker!
+1. Add a new habit
+2. Mark today's progress
+3. View weekly summary
+4. Exit
+> 2
+
+Example
+Your habits: Drink Water, Code, Workout
+Did you do "Drink Water"? (y/n): y
+Did you do "Code"? (y/n): y
+Did you do "Workout"? (y/n): n
+
+Progress saved!
