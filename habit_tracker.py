@@ -1,8 +1,9 @@
+#Import libraries
 import os
 import json
-from datetime import datetime
+from datetime import datetime, timedelta
 
-Data_File =" habits.json"
+Data_File ="habits.json"
 
 def main():
     data = load_data()
@@ -34,7 +35,7 @@ def main():
 def load_data():
     """
     This function:Tries to read from a file named habits.json
-    If the file doesn’t exist, it creates a new structure with:
+    If the file doesnot exist, it creates a new structure with:
     An empty habit list
     An empty progress dictionary
     """
@@ -85,12 +86,17 @@ def add_habit(data):
 def mark_progress(data):
     today = datetime.today().strftime('%Y-%m-%d')
 
-    if today not in data["progress"]:
-        data["progress"][today] = {}
-
     if not data["habits"]:
         print("No habits to track yet. Add some first.")
         return
+
+    if today in data["progress"]:
+        overwrite = input("You've already marked today. Overwrite? (y/n): ").lower()
+        if overwrite != "y":
+            print("Skipped updating today's progress.")
+            return
+
+    data["progress"][today] = {}
 
     print(f"\nMark your progress for {today}:")
     for habit in data["habits"]:
@@ -98,6 +104,8 @@ def mark_progress(data):
         data["progress"][today][habit] = (answer == "y")
 
     print("Today's progress recorded!")
+
+
 
 def view_summary(data):
     print("\n=== Weekly Summary ===")
@@ -120,7 +128,6 @@ def view_summary(data):
         print(f"{habit}: {count}/7 days completed")
 
 if __name__ == "__main__":
-    from datetime import timedelta
     main()
 
 
