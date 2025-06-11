@@ -1,6 +1,7 @@
 import tkinter as tk
-from tkinter import messagebox, simpledialog
+from tkinter import messagebox, simpledialog, Toplevel, Label, PhotoImage
 from habit_tracker import load_data, save_data, datetime, timedelta
+import time
 
 def launch_gui():
     data = load_data()
@@ -57,7 +58,7 @@ def launch_gui():
 
         for habit in data["habits"]:
             streak = 0
-            for i in range(100):
+            for i in range(10):
                 day = (today - timedelta(days=i)).strftime('%Y-%m-%d')
                 if data["progress"].get(day, {}).get(habit):
                     streak += 1
@@ -71,16 +72,35 @@ def launch_gui():
         save_data(data)
         root.destroy()
 
+    
+    #Display a Splash sccreen
+    def show_splash(root):
+        splash = Toplevel()
+        splash.overrideredirect(True)
+        splash.geometry("300x200+600+300")
+        Label(splash, text="Welcome to Smart Habit Tracker!", font=("Arial", 20)).pack(expand=True)
+        root.withdraw()
+        splash.after(2000, lambda: (splash.destroy(), root.deiconify()))
+
+
     # GUI Layout
     root = tk.Tk()
+    root.withdraw()  # Hide main window initially
+    show_splash(root)
+    icon = PhotoImage(file='/home/michael-t-butler/HabitTracker/icon.png')
+    root.iconphoto(True, icon) 
     root.title("Smart Habit Tracker")
-    root.geometry("300x300")
+    root.geometry("400x400")
+    
 
-    tk.Button(root, text="Add Habit(s)", width=25, command=add_habits_gui).pack(pady=10)
-    tk.Button(root, text="Mark Today's Progress", width=25, command=mark_today_gui).pack(pady=10)
-    tk.Button(root, text="Weekly Summary", width=25, command=show_summary_gui).pack(pady=10)
-    tk.Button(root, text="View Streaks", width=25, command=show_streaks_gui).pack(pady=10)
-    tk.Button(root, text="Exit", width=25, command=on_exit).pack(pady=10)
+    #Background
+    root.configure(bg="#885725")
+    #Buttons
+    tk.Button(root, text="Add Habit(s)", width=30, command=add_habits_gui).pack(pady=10)
+    tk.Button(root, text="Mark Today's Progress", width=30, command=mark_today_gui).pack(pady=10)
+    tk.Button(root, text="Weekly Summary", width=30, command=show_summary_gui).pack(pady=10)
+    tk.Button(root, text="View Streaks", width=30, command=show_streaks_gui).pack(pady=10)
+    tk.Button(root, text="Exit", width=30, command=on_exit).pack(pady=10)
 
     root.mainloop()
 

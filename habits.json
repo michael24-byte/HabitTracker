@@ -1,0 +1,23 @@
+{
+    "habits": [
+        "Coding",
+        "Running",
+        "Drinking Water",
+        "Studying",
+        "Sleep Early"
+    ],
+    "progress": {
+        "2025-06-09": {
+            "Coding": true,
+            "Running": true,
+            "Drinking Water": true
+        },
+        "2025-06-10": {
+            "Coding": true,
+            "Running": true,
+            "Drinking Water": true,
+            "Studying": true,
+            "Sleep Early": true
+        }
+    }
+}
