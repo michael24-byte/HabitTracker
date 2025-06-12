@@ -5,11 +5,17 @@ A simple yet powerful Python project to help you build better habits by tracking
 
 📌 Features
 
+
 ✅ Add and track multiple habits
+
 ✅ Mark daily progress with a simple yes/no
+
 💾 Automatically saves data to a local habits.json file
+
 📅 View a weekly summary of your consistency (last 7 days)
+
 🔄 Your progress is saved even after restarting the app
+
 
 🛠️ Technologies Used
 Language: Python
@@ -47,9 +53,9 @@ Open your terminal in that folder
 Run the program:
 
 bash
-Copy
-Edit
+
 python main.py
+
 
 📂 File Overview
 
