@@ -4,6 +4,7 @@ A simple yet powerful Python project to help you build better habits by tracking
 🎓 Final project for Stanford's Code In Place 2025.
 
 📌 Features
+
 ✅ Add and track multiple habits
 ✅ Mark daily progress with a simple yes/no
 💾 Automatically saves data to a local habits.json file
@@ -12,6 +13,7 @@ A simple yet powerful Python project to help you build better habits by tracking
 
 🛠️ Technologies Used
 Language: Python
+
 Standard Libraries:
 
 json — Save and load data
@@ -25,7 +27,9 @@ tkinter — GUI interface (optional)
 matplotlib — Generate visual habit charts
 
 🚀 How to Run
+
 Ignore the other files — they’re a bit crazy haha! 🤪
+
 Just download these 3 files:
 
 habit_tracker.py
@@ -46,7 +50,9 @@ bash
 Copy
 Edit
 python main.py
+
 📂 File Overview
+
 habit_tracker.py — Terminal-based version (main logic)
 
 gui.py — GUI version using Tkinter (optional)
@@ -56,6 +62,7 @@ main.py — Launches the app (combines both tracker and GUI)
 habits.json — Automatically created; stores your habits and progress
 
 📈 Visual Habit Charts
+
 Generate insightful weekly summaries with Matplotlib to keep your motivation high!
 
 ✨ Coming Soon (Ideas)
