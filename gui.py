@@ -1,6 +1,6 @@
 import tkinter as tk
 from tkinter import messagebox, simpledialog, Toplevel, Label, PhotoImage
-from habit_tracker import load_data, save_data, datetime, timedelta
+from habit_tracker import load_data, save_data, datetime, timedelta, plot_habit_chart
 import time
 
 def launch_gui():
@@ -72,6 +72,11 @@ def launch_gui():
         save_data(data)
         root.destroy()
 
+    def show_chart_gui():
+        plot_habit_chart(data)
+    
+
+
     
     #Display a Splash sccreen
     def show_splash(root):
@@ -100,6 +105,7 @@ def launch_gui():
     tk.Button(root, text="Mark Today's Progress", width=30, command=mark_today_gui).pack(pady=10)
     tk.Button(root, text="Weekly Summary", width=30, command=show_summary_gui).pack(pady=10)
     tk.Button(root, text="View Streaks", width=30, command=show_streaks_gui).pack(pady=10)
+    tk.Button(root, text="📈 View Charts", width=30, command=show_chart_gui).pack(pady=10)
     tk.Button(root, text="Exit", width=30, command=on_exit).pack(pady=10)
 
     root.mainloop()

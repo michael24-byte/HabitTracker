@@ -2,6 +2,7 @@
 import os
 import json
 from datetime import datetime, timedelta
+import matplotlib.pyplot as plt
 
 Data_File ="habits.json"
 
@@ -13,7 +14,8 @@ def main():
         print("1. Add habit(s)")
         print("2. Mark today's progress")
         print("3. View weekly summary")
-        print("4. Exit")
+        print("4. View habit charts")
+        print("5. Exit")
         choice = input("Choose an option (1-4): ").strip()
 
         if choice == "1":
@@ -23,6 +25,8 @@ def main():
         elif choice == "3":
             view_summary(data)
         elif choice == "4":
+            plot_habit_chart(data)
+        elif choice == "5":
             save_data(data)
             print("Progress saved. Goodbye!")
             break
@@ -83,6 +87,7 @@ def add_habit(data):
     else:
         print("No new habits were added.")
 
+#Mark progress each day
 def mark_progress(data):
     today = datetime.today().strftime('%Y-%m-%d')
 
@@ -106,7 +111,7 @@ def mark_progress(data):
     print("Today's progress recorded!")
 
 
-
+#Make a summary of the progress
 def view_summary(data):
     print("\n=== Weekly Summary ===")
 
@@ -126,6 +131,32 @@ def view_summary(data):
             if data["progress"].get(day, {}).get(habit):
                 count += 1
         print(f"{habit}: {count}/7 days completed")
+
+
+#Display a bar chart
+def plot_habit_chart(data):
+    today = datetime.today()
+    last_7_days = [(today - timedelta(days=i)).strftime('%Y-%m-%d') for i in range(6, -1, -1)]  # Oldest to newest
+
+    for habit in data["habits"]:
+        counts = []
+        for day in last_7_days:
+            if data["progress"].get(day, {}).get(habit):
+                counts.append(1)
+            else:
+                counts.append(0)
+
+        # Plotting
+        plt.figure(figsize=(6, 3))
+        plt.bar(last_7_days, counts, color='skyblue')
+        plt.title(f"Progress for: {habit}")
+        plt.xticks(rotation=45)
+        plt.ylim(0, 1.2)
+        plt.tight_layout()
+        plt.show(block=False)
+        plt.pause(5)  # Let it show for 5 seconds
+        plt.close()
+
 
 if __name__ == "__main__":
     main()

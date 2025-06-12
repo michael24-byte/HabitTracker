@@ -4,7 +4,10 @@
         "Running",
         "Drinking Water",
         "Studying",
-        "Sleep Early"
+        "Sleep Early",
+        "Code",
+        "Run",
+        "Drinkwater"
     ],
     "progress": {
         "2025-06-09": {
@@ -18,6 +21,16 @@
             "Drinking Water": true,
             "Studying": true,
             "Sleep Early": true
+        },
+        "2025-06-12": {
+            "Coding": true,
+            "Running": true,
+            "Drinking Water": true,
+            "Studying": true,
+            "Sleep Early": true,
+            "Code": true,
+            "Run": true,
+            "Drinkwater": true
         }
     }
 }
